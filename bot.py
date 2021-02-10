@@ -21,8 +21,12 @@ browser.implicitly_wait(10)
 browser.get('https://www.instagram.com')
 
 username_input = browser.find_element_by_css_selector("input[name='username']")
+password_input = browser.find_element_by_css_selector("input[name='password']")
+
 username_input.send_keys(username)
+password_input.send_keys(password)
 sleep(5)
+
 
 login_button = browser.find_element_by_xpath("//button[@type='submit']")
 login_button.click()
