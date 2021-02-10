@@ -36,5 +36,14 @@ sleep(10)
 notifications_settings_dialog = browser.find_element_by_xpath("//button[@class='aOOlW   HoLwm ']")
 notifications_settings_dialog.click()
 
+#Profile Button Menu
+profile_menu_button = browser.find_element_by_css_selector("span[class='_2dbep qNELH']")
+profile_menu_button.click()
+sleep(1)
+
+#Logout
+logout_button = browser.find_element_by_xpath("//div[@class='-qQT3']")
+logout_button.click()
+
 sleep(10)
 browser.close()
