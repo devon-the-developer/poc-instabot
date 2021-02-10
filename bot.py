@@ -27,10 +27,14 @@ username_input.send_keys(username)
 password_input.send_keys(password)
 sleep(5)
 
-
 login_button = browser.find_element_by_xpath("//button[@type='submit']")
 login_button.click()
 
-#sleep(10)
+sleep(10)
 
-#browser.close()
+#Worth creating a variable that has all available options
+notifications_settings_dialog = browser.find_element_by_xpath("//button[@class='aOOlW   HoLwm ']")
+notifications_settings_dialog.click()
+
+sleep(10)
+browser.close()
