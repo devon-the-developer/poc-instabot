@@ -14,8 +14,19 @@ password = os.getenv('PASSWORD')
 print(username)
 print(password)
 
-# Load Safari WebDriver and open it
-browser = webdriver.Safari()
+# Load Firefox WebDriver and open instagram login page
+browser = webdriver.Firefox()
+browser.implicitly_wait(10)
+
 browser.get('https://www.instagram.com')
+
+username_input = browser.find_element_by_css_selector("input[name='username']")
+username_input.send_keys(username)
 sleep(5)
-browser.close()
+
+login_button = browser.find_element_by_xpath("//button[@type='submit']")
+login_button.click()
+
+#sleep(10)
+
+#browser.close()
