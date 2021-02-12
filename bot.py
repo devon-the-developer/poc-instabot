@@ -33,6 +33,14 @@ def logoutAccount(browser):
     sleep(10)
     browser.close()
 
+def gotoHome(browser):
+    homelink = '/'
+    browser.get('https://www.instagram.com' + homelink)
+
+def gotoProfile(browser):
+    profilelink = '/mereleenz/'
+    browser.get('https://www.instagram.com' + profilelink)
+
 
 def main(username, password):
     # Load Firefox WebDriver and open instagram login page
@@ -57,7 +65,14 @@ def main(username, password):
     notifications_settings_dialog = browser.find_element_by_xpath("//button[@class='aOOlW   HoLwm ']")
     notifications_settings_dialog.click()
 
+    sleep(1)
 
+    gotoProfile(browser)
+
+    sleep(3)
+
+    gotoHome(browser)
+    
+    sleep(10)
 
     logoutAccount(browser)
-    
