@@ -43,10 +43,10 @@ def gotoProfile(browser):
     profilelink = '/'+ accountusername + '/'
     browser.get('https://www.instagram.com' + profilelink)
 
-def likePostOnPage(browser):
+def likePostOnPage(browser, post_number):
     #post = browser.find_element_by_xpath('//article[1]')
     #print(posts.text)
-    like_button = browser.find_element_by_xpath("//article[1]/div[3]/section[1]/span[1]/button")
+    like_button = browser.find_element_by_xpath("//article[" + str(post_number) + "]/div[3]/section[1]/span[1]/button")
     like_button.click()
     
     
@@ -82,7 +82,7 @@ def main(username, password):
     #gotoHome(browser)
     #sleep(10)
 
-    likePostOnPage(browser)
-    sleep(3)
+    likePostOnPage(browser, 2)
+    sleep(10)
 
     logoutAccount(browser)
