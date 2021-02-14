@@ -43,6 +43,13 @@ def gotoProfile(browser):
     profilelink = '/'+ accountusername + '/'
     browser.get('https://www.instagram.com' + profilelink)
 
+def likePostOnPage(browser):
+    #post = browser.find_element_by_xpath('//article[1]')
+    #print(posts.text)
+    like_button = browser.find_element_by_xpath("//article[1]/div[3]/section[1]/span[1]/button")
+    like_button.click()
+    
+    
 
 def main(username, password):
     #set accountusername for use elsewhere 
@@ -67,12 +74,15 @@ def main(username, password):
     #Worth creating a variable that has all available options
     notifications_settings_dialog = browser.find_element_by_xpath("//button[@class='aOOlW   HoLwm ']")
     notifications_settings_dialog.click()
-    sleep(1)
+    sleep(2)
 
-    gotoProfile(browser)
+    #gotoProfile(browser)
+    #sleep(3)
+
+    #gotoHome(browser)
+    #sleep(10)
+
+    likePostOnPage(browser)
     sleep(3)
-
-    gotoHome(browser)
-    sleep(10)
 
     logoutAccount(browser)
