@@ -44,16 +44,17 @@ def gotoProfile(browser):
     browser.get('https://www.instagram.com' + profilelink)
 
 def likePostOnPage(browser, post_number):
-    #post = browser.find_element_by_xpath('//article[1]')
-    #print(posts.text)
     try:
-        like_button = browser.find_element_by_xpath("//article[" + str(post_number) + "]/div[3]/section[1]/span[1]/button")
+        like_button = browser.find_element_by_css_selector("button span > svg")
+        lb_state = like_button.get_attribute('aria-label')
+        if(lb_state == "Unlike"):
+            print("Post already liked")
+        elif(lb_state == "Like"):
+            print("Liking Post")
+            like_button.click()
     except:
-        print('no such element')
-        return
-    finally:
-        like_button.click()
-
+        print('Error Trying To Like Post: ' + str(post_number))
+        return        
             
     
     
@@ -89,7 +90,7 @@ def main(username, password):
     #gotoHome(browser)
     #sleep(10)
 
-    likePostOnPage(browser, 3)
+    likePostOnPage(browser, 1)
     sleep(10)
 
-    logoutAccount(browser)
+    #logoutAccount(browser)
