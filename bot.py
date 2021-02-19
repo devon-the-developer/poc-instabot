@@ -45,16 +45,18 @@ def gotoProfile(browser):
 
 def likePostOnPage(browser, post_number):
     try:
-        like_button = browser.find_element_by_css_selector("button span > svg")
-        lb_state = like_button.get_attribute('aria-label')
-        if(lb_state == "Unlike"):
-            print("Post already liked")
-        elif(lb_state == "Like"):
-            print("Liking Post")
-            like_button.click()
+        like_button = browser.find_element_by_xpath(
+            "//article[" + str(post_number) + "]//button [@class='wpO6b ']//span//*[name()='svg' and @aria-label='Like' and @class='_8-yf5 ']")
+        like_button.click()
+        print("Liking Post #" + str(post_number))
     except:
-        print('Error Trying To Like Post: ' + str(post_number))
-        return        
+        try:
+            unlike_button = browser.find_element_by_xpath(
+                "//article[" + str(post_number) + "]//button//span//*[name()='svg' and @aria-label='Unlike']")
+            print('Post #' + str(post_number) + " is already liked")
+        except:
+            print("Error with finding Post #" + str(post_number) + " button")
+            return  
             
     
     
@@ -91,6 +93,10 @@ def main(username, password):
     #sleep(10)
 
     likePostOnPage(browser, 1)
+    likePostOnPage(browser, 2)
+    likePostOnPage(browser, 3)
+    likePostOnPage(browser, 4)
+
     sleep(10)
 
     #logoutAccount(browser)

@@ -1,0 +1,7 @@
+#find_element_by_css_selector("article > div > section > span > button span > svg")
+
+        #lb_state = like_button.get_attribute('aria-label')
+        #if(lb_state == "Unlike"):
+            #print("Post" + str(post_number) + "already liked")
+        #elif(lb_state == "Like"):
+            #print("Liking Post " + str(post_number))
