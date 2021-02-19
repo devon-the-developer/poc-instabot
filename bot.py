@@ -39,9 +39,13 @@ def gotoHome(browser):
     homelink = '/'
     browser.get('https://www.instagram.com' + homelink)
 
-def gotoProfile(browser):
+def gotoSelfProfile(browser):
     profilelink = '/'+ accountusername + '/'
     browser.get('https://www.instagram.com' + profilelink)
+
+def gotoNamedProfile(browser, targetname):
+    namedtarget_link = '/' + targetname + '/'
+    browser.get('https://www.instagram.com' + namedtarget_link)
 
 def likePostOnPage(browser, post_number):
     try:
@@ -92,10 +96,11 @@ def main(username, password):
     #gotoHome(browser)
     #sleep(10)
 
-    likePostOnPage(browser, 1)
-    likePostOnPage(browser, 2)
-    likePostOnPage(browser, 3)
-    likePostOnPage(browser, 4)
+    gotoNamedProfile(browser, "medeaswim")
+    #likePostOnPage(browser, 1)
+    #likePostOnPage(browser, 2)
+    #likePostOnPage(browser, 3)
+    #likePostOnPage(browser, 4)
 
     sleep(10)
 
