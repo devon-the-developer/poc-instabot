@@ -33,7 +33,7 @@ def logoutAccount(browser):
     logout_button.click()
 
     sleep(10)
-    browser.close()
+    browser.quit()
 
 def gotoHome(browser):
     homelink = '/'
@@ -102,6 +102,6 @@ def main(username, password):
     #likePostOnPage(browser, 3)
     #likePostOnPage(browser, 4)
 
-    sleep(10)
-
+    sleep(3)
+    browser.quit()
     #logoutAccount(browser)
