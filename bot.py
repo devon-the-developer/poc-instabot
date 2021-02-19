@@ -33,16 +33,37 @@ def logoutAccount(browser):
     logout_button.click()
 
     sleep(10)
-    browser.close()
+    browser.quit()
 
 def gotoHome(browser):
     homelink = '/'
     browser.get('https://www.instagram.com' + homelink)
 
-def gotoProfile(browser):
+def gotoSelfProfile(browser):
     profilelink = '/'+ accountusername + '/'
     browser.get('https://www.instagram.com' + profilelink)
 
+def gotoNamedProfile(browser, targetname):
+    namedtarget_link = '/' + targetname + '/'
+    browser.get('https://www.instagram.com' + namedtarget_link)
+
+def likePostOnPage(browser, post_number):
+    try:
+        like_button = browser.find_element_by_xpath(
+            "//article[" + str(post_number) + "]//button [@class='wpO6b ']//span//*[name()='svg' and @aria-label='Like' and @class='_8-yf5 ']")
+        like_button.click()
+        print("Liking Post #" + str(post_number))
+    except:
+        try:
+            unlike_button = browser.find_element_by_xpath(
+                "//article[" + str(post_number) + "]//button//span//*[name()='svg' and @aria-label='Unlike']")
+            print('Post #' + str(post_number) + " is already liked")
+        except:
+            print("Error with finding Post #" + str(post_number) + " button")
+            return  
+            
+    
+    
 
 def main(username, password):
     #set accountusername for use elsewhere 
@@ -67,12 +88,20 @@ def main(username, password):
     #Worth creating a variable that has all available options
     notifications_settings_dialog = browser.find_element_by_xpath("//button[@class='aOOlW   HoLwm ']")
     notifications_settings_dialog.click()
-    sleep(1)
+    sleep(2)
 
-    gotoProfile(browser)
+    #gotoProfile(browser)
+    #sleep(3)
+
+    #gotoHome(browser)
+    #sleep(10)
+
+    gotoNamedProfile(browser, "medeaswim")
+    #likePostOnPage(browser, 1)
+    #likePostOnPage(browser, 2)
+    #likePostOnPage(browser, 3)
+    #likePostOnPage(browser, 4)
+
     sleep(3)
-
-    gotoHome(browser)
-    sleep(10)
-
-    logoutAccount(browser)
+    browser.quit()
+    #logoutAccount(browser)
